@@ -2,7 +2,10 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
+.idea
+.vscode
 node_modules
+/src/hooks
 
 # builds
 build

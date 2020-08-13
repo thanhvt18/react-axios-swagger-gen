@@ -1,0 +1,16 @@
+import axios from 'axios';
+
+const axiosClient = axios.create({
+baseURL: `${window['{{baseUrl}}']}`,
+});
+
+const getResultAndHeaders = (response: any) => {
+  return {
+    data: response.data,
+    headers: response.headers,
+  };
+};
+
+export default {
+  axiosClient, getResultAndHeaders
+};

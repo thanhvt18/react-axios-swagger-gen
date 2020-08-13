@@ -1,0 +1,7175 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "REST API for Admin Loyalty Offchain",
+    "version": "1.0",
+    "title": "Loyalty Offchain Admin API",
+    "termsOfService": "Terms Of Service URL",
+    "contact": {
+      "name": "Duy Kien Ngo",
+      "email": "kien.nd@teko.vn"
+    },
+    "license": {
+      "name": "TEKO License",
+      "url": "TEKO Lincense URL"
+    }
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "account-controller",
+      "description": "Account Controller"
+    },
+    {
+      "name": "as-client-scope-controller",
+      "description": "As Client Scope Controller"
+    },
+    {
+      "name": "callback-controller",
+      "description": "Callback Controller"
+    },
+    {
+      "name": "client-controller",
+      "description": "Client Controller"
+    },
+    {
+      "name": "file-controller",
+      "description": "File Controller"
+    },
+    {
+      "name": "file-export-controller",
+      "description": "File Export Controller"
+    },
+    {
+      "name": "granted-rule-controller",
+      "description": "Granted Rule Controller"
+    },
+    {
+      "name": "member-controller",
+      "description": "Member Controller"
+    },
+    {
+      "name": "merchant-controller",
+      "description": "Merchant Controller"
+    },
+    {
+      "name": "network-controller",
+      "description": "Network Controller"
+    },
+    {
+      "name": "pr-amount-quota-controller",
+      "description": "Pr Amount Quota Controller"
+    },
+    {
+      "name": "pr-ingress-config-controller",
+      "description": "Pr Ingress Config Controller"
+    },
+    {
+      "name": "random-data-controller",
+      "description": "Random Data Controller"
+    },
+    {
+      "name": "rule-point-money-controller",
+      "description": "Rule Point Money Controller"
+    },
+    {
+      "name": "terminal-controller",
+      "description": "Terminal Controller"
+    },
+    {
+      "name": "tester-controller",
+      "description": "Tester Controller"
+    },
+    {
+      "name": "transaction-controller",
+      "description": "Transaction Controller"
+    },
+    {
+      "name": "transaction-point-controller",
+      "description": "Transaction Point Controller"
+    },
+    {
+      "name": "transaction-system-controller",
+      "description": "Transaction System Controller"
+    },
+    {
+      "name": "user-controller",
+      "description": "User Controller"
+    }
+  ],
+  "paths": {
+    "/admin/callback/gsheet": {
+      "get": {
+        "tags": [
+          "callback-controller"
+        ],
+        "summary": "googleSheetCallback",
+        "operationId": "googleSheetCallbackUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/admin/v1/accounts": {
+      "get": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "List Accounts",
+        "operationId": "searchUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "object_id",
+            "in": "query",
+            "description": "object_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "object_type",
+            "in": "query",
+            "description": "object_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListAccountResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListAccountResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/accounts/obj-types": {
+      "get": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "Api get Object Types",
+        "operationId": "getObjTypesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/accounts/statuses": {
+      "get": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "Api get status list",
+        "operationId": "getStatusesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/accounts/types": {
+      "get": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "Api get Account Types",
+        "operationId": "getTypesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/accounts/{id}": {
+      "get": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "Get Detail Account",
+        "operationId": "getUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«AccountResponse»",
+              "$ref": "#/definitions/TKResponse«AccountResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "account-controller"
+        ],
+        "summary": "Create Account for network",
+        "operationId": "createUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/client-scope/join-scope": {
+      "post": {
+        "tags": [
+          "as-client-scope-controller"
+        ],
+        "summary": "Clients join Scope API",
+        "operationId": "createUsingPOST_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "JoinScopeRequest",
+              "$ref": "#/definitions/JoinScopeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/client-scope/status": {
+      "put": {
+        "tags": [
+          "as-client-scope-controller"
+        ],
+        "summary": "Update status Client Scope API",
+        "operationId": "updateStatusUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateClientScopeRequest",
+              "$ref": "#/definitions/UpdateClientScopeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/clients": {
+      "get": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "List Clients",
+        "operationId": "searchUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "api_version",
+            "in": "query",
+            "description": "api_version",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_id",
+            "in": "query",
+            "description": "network_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListClientResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListClientResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "Create Client",
+        "operationId": "createUsingPOST_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateClientRequest",
+              "$ref": "#/definitions/CreateClientRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«ClientResponse»",
+              "$ref": "#/definitions/TKResponse«ClientResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/clients/encrypt": {
+      "put": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "Encrypt Client secret key",
+        "operationId": "encryptClientSecretKeyUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/clients/statuses": {
+      "get": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "Api get status list",
+        "operationId": "getStatusesUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/clients/{id}": {
+      "get": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "Get Detail Client",
+        "operationId": "getUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«ClientResponse»",
+              "$ref": "#/definitions/TKResponse«ClientResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "client-controller"
+        ],
+        "summary": "Update Client",
+        "operationId": "updateUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateClientRequest",
+              "$ref": "#/definitions/UpdateClientRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«ClientResponse»",
+              "$ref": "#/definitions/TKResponse«ClientResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/files/export/download/csv/{file_name}": {
+      "post": {
+        "tags": [
+          "file-export-controller"
+        ],
+        "summary": "download",
+        "operationId": "downloadUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "file_name",
+            "in": "path",
+            "description": "file_name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/files/export/export-d365-txn/{merchant_ids}/{date}": {
+      "get": {
+        "tags": [
+          "file-export-controller"
+        ],
+        "summary": "exportD365Txn",
+        "operationId": "exportD365TxnUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "date",
+            "in": "path",
+            "description": "date",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "merchant_ids",
+            "in": "path",
+            "description": "merchant_ids",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/files/gcs": {
+      "get": {
+        "tags": [
+          "file-controller"
+        ],
+        "summary": "getFile",
+        "operationId": "getFileUsingGET",
+        "produces": [
+          "application/octet-stream"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "name",
+            "description": "name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string",
+              "format": "byte"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules": {
+      "get": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "List Granted Rules",
+        "operationId": "searchUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "description": "merchant_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListGrantedRulesResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListGrantedRulesResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Create Granted Rule",
+        "operationId": "createUsingPOST_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateGrantedRulePointRequest",
+              "$ref": "#/definitions/CreateGrantedRulePointRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«GrantedRuleResponse»",
+              "$ref": "#/definitions/TKResponse«GrantedRuleResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/privilege": {
+      "post": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Create Granted Rule",
+        "operationId": "createPrivilegeUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "effect_date",
+            "in": "query",
+            "description": "effect date, Format: yyyymmdd",
+            "required": false,
+            "type": "string",
+            "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+          },
+          {
+            "name": "expire_date",
+            "in": "query",
+            "description": "expire date, Format: yyyymmdd",
+            "required": false,
+            "type": "string",
+            "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+          },
+          {
+            "name": "members",
+            "in": "formData",
+            "description": "members",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "description": "Mã merchant",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Tên rule",
+            "required": true,
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          {
+            "name": "products",
+            "in": "formData",
+            "description": "products",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "quota_amount",
+            "in": "query",
+            "description": "Quota amount for privilege granted rule",
+            "required": true,
+            "type": "number",
+            "maximum": 999999999999,
+            "exclusiveMaximum": false,
+            "minimum": 1,
+            "exclusiveMinimum": false,
+            "format": "double"
+          },
+          {
+            "name": "quota_cycle",
+            "in": "query",
+            "description": "Quota cycle for privlege granted rule",
+            "required": true,
+            "type": "integer",
+            "maximum": 2,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«GrantedRuleResponse»",
+              "$ref": "#/definitions/TKResponse«GrantedRuleResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/privilege/{id}": {
+      "put": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Update Granted Rule",
+        "operationId": "updatePrivilegeUsingPUT",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "effect_date",
+            "in": "query",
+            "description": "effect date, Format: yyyymmdd",
+            "required": false,
+            "type": "string",
+            "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+          },
+          {
+            "name": "expire_date",
+            "in": "query",
+            "description": "expire date, Format: yyyymmdd",
+            "required": false,
+            "type": "string",
+            "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "members",
+            "in": "formData",
+            "description": "members",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Tên rule",
+            "required": false,
+            "type": "string",
+            "maxLength": 50,
+            "minLength": 0
+          },
+          {
+            "name": "products",
+            "in": "formData",
+            "description": "products",
+            "required": false,
+            "type": "file"
+          },
+          {
+            "name": "quota_amount",
+            "in": "query",
+            "description": "Quota amount for privilege granted rule",
+            "required": false,
+            "type": "number",
+            "maximum": 999999999999,
+            "exclusiveMaximum": false,
+            "minimum": 1,
+            "exclusiveMinimum": false,
+            "format": "double"
+          },
+          {
+            "name": "quota_cycle",
+            "in": "query",
+            "description": "Quota cycle for privlege granted rule",
+            "required": false,
+            "type": "integer",
+            "maximum": 2,
+            "exclusiveMaximum": false,
+            "minimum": 0,
+            "exclusiveMinimum": false,
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«GrantedRuleResponse»",
+              "$ref": "#/definitions/TKResponse«GrantedRuleResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/statuses": {
+      "get": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Api get Granted Rule status list",
+        "operationId": "getStatusesUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/types": {
+      "get": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Api get Granted Rule Types",
+        "operationId": "getTypesUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/{id}": {
+      "get": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Get Detail Granted Rule",
+        "operationId": "getUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«GrantedRulesDetailResponse»",
+              "$ref": "#/definitions/TKResponse«GrantedRulesDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Update Granted Rule",
+        "operationId": "updateUsingPUT_1",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateGrantedRulePointRequest",
+              "$ref": "#/definitions/UpdateGrantedRulePointRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«GrantedRuleResponse»",
+              "$ref": "#/definitions/TKResponse«GrantedRuleResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/granted-rules/{id}/status": {
+      "put": {
+        "tags": [
+          "granted-rule-controller"
+        ],
+        "summary": "Change status Granted Rule, default status Active",
+        "operationId": "activeUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "StatusGrantedRuleRequest",
+              "$ref": "#/definitions/StatusGrantedRuleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/members": {
+      "get": {
+        "tags": [
+          "member-controller"
+        ],
+        "summary": "List Members",
+        "operationId": "searchUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "external_id",
+            "in": "query",
+            "description": "external_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListMemberResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListMemberResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/members/statuses": {
+      "get": {
+        "tags": [
+          "member-controller"
+        ],
+        "summary": "Api get Merchant status list",
+        "operationId": "getStatusesUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/members/sync-d365": {
+      "put": {
+        "tags": [
+          "member-controller"
+        ],
+        "summary": "Api get Sync new Member to D365 which sync failed before",
+        "operationId": "syncD365UsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "number_sync",
+            "in": "query",
+            "description": "number_sync",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/members/{id}": {
+      "get": {
+        "tags": [
+          "member-controller"
+        ],
+        "summary": "Get member's info by id",
+        "operationId": "getUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«MemberDetailResponse»",
+              "$ref": "#/definitions/TKResponse«MemberDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/merchants": {
+      "get": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Get List Merchant",
+        "operationId": "searchUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "merchant_name",
+            "in": "query",
+            "description": "merchant_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListMerchantResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListMerchantResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Create Merchant",
+        "operationId": "createUsingPOST_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateMerchantRequest",
+              "$ref": "#/definitions/CreateMerchantRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«MerchantDetailResponse»",
+              "$ref": "#/definitions/TKResponse«MerchantDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/merchants/export": {
+      "post": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Export Merchant",
+        "operationId": "exportUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "merchant_name",
+            "in": "query",
+            "description": "merchant_name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/merchants/statuses": {
+      "get": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Api get Merchant status list",
+        "operationId": "getStatusesUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/merchants/{id}": {
+      "get": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Get Merchant's info",
+        "operationId": "getUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«MerchantDetailResponse»",
+              "$ref": "#/definitions/TKResponse«MerchantDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "merchant-controller"
+        ],
+        "summary": "Update Merchant",
+        "operationId": "updateUsingPUT_2",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateMerchantRequest",
+              "$ref": "#/definitions/UpdateMerchantRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«MerchantDetailResponse»",
+              "$ref": "#/definitions/TKResponse«MerchantDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/networks": {
+      "get": {
+        "tags": [
+          "network-controller"
+        ],
+        "summary": "Api get list Network",
+        "operationId": "searchUsingGET_5",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListNetworkResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListNetworkResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "network-controller"
+        ],
+        "summary": "Api Create Network",
+        "operationId": "createUsingPOST_5",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateNetworkRequest",
+              "$ref": "#/definitions/CreateNetworkRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«NetworkResponse»",
+              "$ref": "#/definitions/TKResponse«NetworkResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/networks/statuses": {
+      "get": {
+        "tags": [
+          "network-controller"
+        ],
+        "summary": "Api get status list",
+        "operationId": "getStatusesUsingGET_5",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«StatusResponse»",
+              "$ref": "#/definitions/TKResponse«StatusResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/networks/{id}": {
+      "get": {
+        "tags": [
+          "network-controller"
+        ],
+        "summary": "Api Network detail",
+        "operationId": "getUsingGET_5",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«NetworkResponse»",
+              "$ref": "#/definitions/TKResponse«NetworkResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "network-controller"
+        ],
+        "summary": "Api Update Network's Info",
+        "operationId": "updateUsingPUT_3",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateNetworkRequest",
+              "$ref": "#/definitions/UpdateNetworkRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«NetworkResponse»",
+              "$ref": "#/definitions/TKResponse«NetworkResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/privileges/ingress-config/{config_id}/sync-pr-members": {
+      "post": {
+        "tags": [
+          "pr-ingress-config-controller"
+        ],
+        "summary": "Request to sync data of Privilege Members",
+        "operationId": "prMembersUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "config_id",
+            "in": "path",
+            "description": "config_id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/privileges/ingress-config/{config_id}/sync-pr-members-products": {
+      "post": {
+        "tags": [
+          "pr-ingress-config-controller"
+        ],
+        "summary": "Request to sync data of Privilege Members and Privilege Products",
+        "operationId": "prMembersAndProductsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "config_id",
+            "in": "path",
+            "description": "config_id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/privileges/ingress-config/{config_id}/sync-pr-products": {
+      "post": {
+        "tags": [
+          "pr-ingress-config-controller"
+        ],
+        "summary": "Request to sync data of Privilege Products",
+        "operationId": "prProductsUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "config_id",
+            "in": "path",
+            "description": "config_id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/privileges/quota-amount/amount-cycle": {
+      "get": {
+        "tags": [
+          "pr-amount-quota-controller"
+        ],
+        "summary": "value cycle",
+        "operationId": "cyclesUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«CycleResponse»",
+              "$ref": "#/definitions/TKResponse«CycleResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/random/data": {
+      "get": {
+        "tags": [
+          "random-data-controller"
+        ],
+        "summary": "randomData",
+        "operationId": "randomDataUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/random/data/{client-id}": {
+      "get": {
+        "tags": [
+          "random-data-controller"
+        ],
+        "summary": "randomDataForNetwork",
+        "operationId": "randomDataForNetworkUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "client_id",
+            "in": "path",
+            "description": "client_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/random/rule-point": {
+      "post": {
+        "tags": [
+          "random-data-controller"
+        ],
+        "summary": "fakeRulePoint",
+        "operationId": "fakeRulePointUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateRulePointMoneyRequest",
+              "$ref": "#/definitions/CreateRulePointMoneyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/rule/point-money": {
+      "get": {
+        "tags": [
+          "rule-point-money-controller"
+        ],
+        "summary": "Get List rule point money",
+        "operationId": "searchUsingGET_6",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "apply_time",
+            "in": "query",
+            "description": "apply_time",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "currency",
+            "in": "query",
+            "description": "currency",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "network_id",
+            "in": "query",
+            "description": "network_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListRulePointMoneyResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListRulePointMoneyResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "rule-point-money-controller"
+        ],
+        "summary": "Create rule point money",
+        "operationId": "createUsingPOST_6",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "createRulePointMoneyRequest",
+            "description": "createRulePointMoneyRequest",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateRulePointMoneyRequest",
+              "$ref": "#/definitions/CreateRulePointMoneyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«RulePointMoneyResponse»",
+              "$ref": "#/definitions/TKResponse«RulePointMoneyResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/rule/point-money/{id}": {
+      "get": {
+        "tags": [
+          "rule-point-money-controller"
+        ],
+        "summary": "Get rule point money",
+        "operationId": "getUsingGET_6",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«RulePointMoneyResponse»",
+              "$ref": "#/definitions/TKResponse«RulePointMoneyResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "rule-point-money-controller"
+        ],
+        "summary": "Update rule point money",
+        "operationId": "updateUsingPUT_4",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "updateRulePointMoneyRequest",
+            "description": "updateRulePointMoneyRequest",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateRulePointMoneyRequest",
+              "$ref": "#/definitions/UpdateRulePointMoneyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«RulePointMoneyResponse»",
+              "$ref": "#/definitions/TKResponse«RulePointMoneyResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/rule/point-money/{id}/status": {
+      "put": {
+        "tags": [
+          "rule-point-money-controller"
+        ],
+        "summary": "change status Rule Point Money",
+        "operationId": "changeStatusUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "StatusRulePointMoneyRequest",
+              "$ref": "#/definitions/StatusRulePointMoneyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/terminals": {
+      "get": {
+        "tags": [
+          "terminal-controller"
+        ],
+        "summary": "Get List Terminals",
+        "operationId": "searchUsingGET_7",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "description": "code",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "description": "merchant_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListTerminalResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListTerminalResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "terminal-controller"
+        ],
+        "summary": "Create Terminal",
+        "operationId": "createUsingPOST_7",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateTerminalRequest",
+              "$ref": "#/definitions/CreateTerminalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TerminalDetailResponse»",
+              "$ref": "#/definitions/TKResponse«TerminalDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/terminals/statuses": {
+      "get": {
+        "tags": [
+          "terminal-controller"
+        ],
+        "summary": "Api get Terminal statuses",
+        "operationId": "getStatusesUsingGET_6",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/terminals/{id}": {
+      "get": {
+        "tags": [
+          "terminal-controller"
+        ],
+        "summary": "Get List Terminals",
+        "operationId": "getUsingGET_7",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TerminalDetailResponse»",
+              "$ref": "#/definitions/TKResponse«TerminalDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "terminal-controller"
+        ],
+        "summary": "Update Terminal",
+        "operationId": "updateUsingPUT_5",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateTerminalRequest",
+              "$ref": "#/definitions/UpdateTerminalRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TerminalDetailResponse»",
+              "$ref": "#/definitions/TKResponse«TerminalDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/tester/test-account-balance": {
+      "post": {
+        "tags": [
+          "tester-controller"
+        ],
+        "summary": "testAccountBalance",
+        "operationId": "testAccountBalanceUsingPOST",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "string"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transaction/points": {
+      "get": {
+        "tags": [
+          "transaction-point-controller"
+        ],
+        "summary": "Get Original Transaction",
+        "operationId": "searchUsingGET_9",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "query",
+            "description": "account_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "member_id",
+            "in": "query",
+            "description": "member_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "txn_id",
+            "in": "query",
+            "description": "txn_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListTransactionPointResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListTransactionPointResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transaction/points/export": {
+      "get": {
+        "tags": [
+          "transaction-point-controller"
+        ],
+        "summary": "Export Transaction",
+        "operationId": "exportUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "account_id",
+            "in": "query",
+            "description": "account_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "file_type",
+            "in": "query",
+            "description": "file_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "member_id",
+            "in": "query",
+            "description": "member_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 1000,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "txn_id",
+            "in": "query",
+            "description": "txn_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transaction/points/transaction-statuses": {
+      "get": {
+        "tags": [
+          "transaction-point-controller"
+        ],
+        "summary": "Api get TxnPoint statuses",
+        "operationId": "getStatusesUsingGET_8",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transaction/points/types": {
+      "get": {
+        "tags": [
+          "transaction-point-controller"
+        ],
+        "summary": "getTypes",
+        "operationId": "getTypesUsingGET_3",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transaction/points/{id}": {
+      "get": {
+        "tags": [
+          "transaction-point-controller"
+        ],
+        "summary": "Get Transaction Point",
+        "operationId": "getUsingGET_8",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TransactionPointResponse»",
+              "$ref": "#/definitions/TKResponse«TransactionPointResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions": {
+      "get": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Get Transaction",
+        "operationId": "searchUsingGET_8",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "member_id",
+            "in": "query",
+            "description": "member_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "description": "merchant_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ref_id",
+            "in": "query",
+            "description": "ref_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListTransactionResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListTransactionResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/export": {
+      "get": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Export Transaction",
+        "operationId": "exportUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "file_type",
+            "in": "query",
+            "description": "file_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "member_id",
+            "in": "query",
+            "description": "member_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "merchant_id",
+            "in": "query",
+            "description": "merchant_id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "phone",
+            "in": "query",
+            "description": "phone",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ref_id",
+            "in": "query",
+            "description": "ref_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 1000,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/request-export-d365-txn": {
+      "post": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Api request to Export D365 Transaction and Send email",
+        "operationId": "requestExportD365TxnUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "request_export_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": true,
+            "type": "string",
+            "allowEmptyValue": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/statuses": {
+      "get": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Api get Txn statuses",
+        "operationId": "getStatusesUsingGET_7",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/systems": {
+      "get": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Get Transaction System",
+        "operationId": "searchUsingGET_10",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "txn_id",
+            "in": "query",
+            "description": "txn_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListTransactionSystemResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListTransactionSystemResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Create System Transaction - New Point",
+        "operationId": "createUsingPOST_8",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "TxnSystemPointRequest",
+              "$ref": "#/definitions/TxnSystemPointRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«SystemNewPointResponse»",
+              "$ref": "#/definitions/TKResponse«SystemNewPointResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/systems/export": {
+      "get": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Export Transaction",
+        "operationId": "exportUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "file_type",
+            "in": "query",
+            "description": "file_type",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 1000,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "description": "Format : yyyyMMdd",
+            "required": false,
+            "type": "string",
+            "allowEmptyValue": false
+          },
+          {
+            "name": "txn_id",
+            "in": "query",
+            "description": "txn_id",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "type",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/systems/new": {
+      "post": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Create System Transaction - New Point",
+        "operationId": "createNewUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "TxnSystemPointRequest",
+              "$ref": "#/definitions/TxnSystemPointRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«SystemNewPointResponse»",
+              "$ref": "#/definitions/TKResponse«SystemNewPointResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/systems/types": {
+      "get": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Api get transaction system types list",
+        "operationId": "getTypesUsingGET_4",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/systems/{id}": {
+      "get": {
+        "tags": [
+          "transaction-system-controller"
+        ],
+        "summary": "Get Transaction System",
+        "operationId": "getUsingGET_9",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TransactionSystemDetailResponse»",
+              "$ref": "#/definitions/TKResponse«TransactionSystemDetailResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/types": {
+      "get": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Api get Transaction Types",
+        "operationId": "getTypesUsingGET_2",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/transactions/{id}": {
+      "get": {
+        "tags": [
+          "transaction-controller"
+        ],
+        "summary": "Transaction's Info",
+        "operationId": "getInfoUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«TransactionResponse»",
+              "$ref": "#/definitions/TKResponse«TransactionResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Get list user",
+        "operationId": "searchUsingGET_11",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "email",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "in": "query",
+            "description": "name",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "network_ids",
+            "in": "query",
+            "description": "network_ids",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "page",
+            "required": false,
+            "type": "integer",
+            "default": 1,
+            "format": "int32"
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "size",
+            "required": false,
+            "type": "integer",
+            "default": 10,
+            "format": "int32"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "sort",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKExtraResponse«ListUserResponse»",
+              "$ref": "#/definitions/TKExtraResponse«ListUserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Create user ",
+        "operationId": "createUsingPOST_9",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "CreateUserRequest",
+              "$ref": "#/definitions/CreateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«UserResponse»",
+              "$ref": "#/definitions/TKResponse«UserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users/info": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Get User info by token",
+        "operationId": "getInfoUsingGET_1",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«UserResponse»",
+              "$ref": "#/definitions/TKResponse«UserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users/logout": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Logout",
+        "operationId": "logoutUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«string»",
+              "$ref": "#/definitions/TKResponse«string»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users/statuses": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Api get user statuses",
+        "operationId": "getStatusesUsingGET_9",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«DropDownResponse»",
+              "$ref": "#/definitions/TKResponse«DropDownResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users/{id}": {
+      "get": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Get User details",
+        "operationId": "getUsingGET_10",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«UserResponse»",
+              "$ref": "#/definitions/TKResponse«UserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      },
+      "put": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Update User",
+        "operationId": "updateUsingPUT_7",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateUserRequest",
+              "$ref": "#/definitions/UpdateUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«UserResponse»",
+              "$ref": "#/definitions/TKResponse«UserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    },
+    "/admin/v1/users/{id}/status": {
+      "put": {
+        "tags": [
+          "user-controller"
+        ],
+        "summary": "Update user status",
+        "operationId": "updateUsingPUT_6",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "in": "body",
+            "name": "request",
+            "description": "request",
+            "required": true,
+            "schema": {
+              "originalRef": "UpdateUserStatusRequest",
+              "$ref": "#/definitions/UpdateUserStatusRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "originalRef": "TKResponse«UserResponse»",
+              "$ref": "#/definitions/TKResponse«UserResponse»"
+            }
+          }
+        },
+        "security": [
+          {
+            "Authorization": [
+              "global"
+            ]
+          }
+        ],
+        "deprecated": false
+      }
+    }
+  },
+  "securityDefinitions": {
+    "Authorization": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "AccountResponse": {
+      "type": "object",
+      "properties": {
+        "account_balance_id": {
+          "type": "string"
+        },
+        "account_type": {
+          "type": "string"
+        },
+        "balance": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "object_id": {
+          "type": "string"
+        },
+        "object_name": {
+          "type": "string"
+        },
+        "object_type": {
+          "type": "string"
+        },
+        "object_type_text": {
+          "type": "string"
+        },
+        "onchain_balance": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "onchain_status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "AccountResponse"
+    },
+    "CUGrantedRuleAmount": {
+      "type": "object",
+      "required": [
+        "from_amount",
+        "rate"
+      ],
+      "properties": {
+        "from_amount": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 999999999999,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "rate": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 999999999999,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "to_amount": {
+          "type": "number",
+          "format": "double",
+          "minimum": 1,
+          "maximum": 999999999999,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "CUGrantedRuleAmount"
+    },
+    "ClientResponse": {
+      "type": "object",
+      "properties": {
+        "api_callback": {
+          "type": "string"
+        },
+        "api_version": {
+          "type": "string"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "network": {
+          "originalRef": "NetworkNameResponse",
+          "$ref": "#/definitions/NetworkNameResponse"
+        },
+        "secret_key": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "ClientResponse"
+    },
+    "CreateClientRequest": {
+      "type": "object",
+      "required": [
+        "name",
+        "network_id"
+      ],
+      "properties": {
+        "api_callback": {
+          "type": "string",
+          "description": "api callback",
+          "minLength": 0,
+          "maxLength": 200,
+          "pattern": "^|^(http|https)://(.*)"
+        },
+        "api_version": {
+          "type": "string",
+          "description": "api version",
+          "minLength": 0,
+          "maxLength": 5,
+          "pattern": "^[a-zA-Z0-9_.-]*$"
+        },
+        "name": {
+          "type": "string",
+          "description": "name",
+          "minLength": 0,
+          "maxLength": 50
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Network Id"
+        }
+      },
+      "title": "CreateClientRequest"
+    },
+    "CreateGrantedRulePointRequest": {
+      "type": "object",
+      "required": [
+        "granted_rule_amounts",
+        "merchant_id",
+        "name"
+      ],
+      "properties": {
+        "effect_date": {
+          "type": "string",
+          "description": "effect date, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "expire_date": {
+          "type": "string",
+          "description": "expire date, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "granted_rule_amounts": {
+          "type": "array",
+          "description": "Danh sách rule theo số tiền",
+          "items": {
+            "originalRef": "CUGrantedRuleAmount",
+            "$ref": "#/definitions/CUGrantedRuleAmount"
+          }
+        },
+        "merchant_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Mã merchant"
+        },
+        "name": {
+          "type": "string",
+          "description": "Tên rule",
+          "minLength": 0,
+          "maxLength": 50
+        }
+      },
+      "title": "CreateGrantedRulePointRequest"
+    },
+    "CreateMerchantRequest": {
+      "type": "object",
+      "required": [
+        "merchant_code",
+        "name"
+      ],
+      "properties": {
+        "merchant_code": {
+          "type": "string",
+          "description": "Merchant code",
+          "minLength": 1,
+          "maxLength": 50,
+          "pattern": "^[a-zA-Z\\d_-]+$"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Network Id"
+        }
+      },
+      "title": "CreateMerchantRequest"
+    },
+    "CreateNetworkRequest": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "title": "CreateNetworkRequest"
+    },
+    "CreateRulePointMoneyRequest": {
+      "type": "object",
+      "required": [
+        "currency",
+        "exchange_amount_grant",
+        "exchange_amount_spend",
+        "network_id",
+        "unit_point"
+      ],
+      "properties": {
+        "apply_from": {
+          "type": "string",
+          "description": "appy from, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "apply_to": {
+          "type": "string",
+          "description": "appy to, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "currency": {
+          "type": "string",
+          "description": "currency",
+          "minLength": 3,
+          "maxLength": 2147483647
+        },
+        "exchange_amount_grant": {
+          "type": "number",
+          "format": "float",
+          "description": "exchange amount grant per unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "exchange_amount_spend": {
+          "type": "number",
+          "format": "float",
+          "description": "exchange amount spend per unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Network Id"
+        },
+        "unit_point": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        }
+      },
+      "title": "CreateRulePointMoneyRequest"
+    },
+    "CreateTerminalRequest": {
+      "type": "object",
+      "required": [
+        "code",
+        "merchant_id",
+        "name"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Địa chỉ Terminal"
+        },
+        "code": {
+          "type": "string",
+          "description": "code",
+          "minLength": 1,
+          "maxLength": 2147483647
+        },
+        "merchant_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Id Merchant"
+        },
+        "name": {
+          "type": "string",
+          "description": "Tên Terminal"
+        }
+      },
+      "title": "CreateTerminalRequest"
+    },
+    "CreateUserRequest": {
+      "type": "object",
+      "required": [
+        "email",
+        "network_ids"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email"
+        },
+        "network_ids": {
+          "type": "array",
+          "description": "List network",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "title": "CreateUserRequest"
+    },
+    "CycleResponse": {
+      "type": "object",
+      "properties": {
+        "cycles": {
+          "type": "array",
+          "items": {
+            "originalRef": "DropdownItem",
+            "$ref": "#/definitions/DropdownItem"
+          }
+        }
+      },
+      "title": "CycleResponse"
+    },
+    "DropDownResponse": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "originalRef": "DropdownItem",
+            "$ref": "#/definitions/DropdownItem"
+          }
+        }
+      },
+      "title": "DropDownResponse"
+    },
+    "DropdownItem": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "object"
+        },
+        "display": {
+          "type": "string"
+        }
+      },
+      "title": "DropdownItem"
+    },
+    "ExtraResponse": {
+      "type": "object",
+      "properties": {
+        "checksum": {
+          "type": "string"
+        },
+        "response_id": {
+          "type": "string"
+        }
+      },
+      "title": "ExtraResponse"
+    },
+    "GrantedRuleResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "GrantedRuleResponse"
+    },
+    "GrantedRulesDetailResponse": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "effect_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "expiry_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "merchant_id": {
+          "type": "string"
+        },
+        "merchant_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rule_type": {
+          "type": "string"
+        },
+        "rule_type_text": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "GrantedRulesDetailResponse"
+    },
+    "IGrantedRuleDTO": {
+      "type": "object",
+      "properties": {
+        "effect_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "expiry_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "merchant_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "rule_type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sync_error_message": {
+          "type": "string"
+        },
+        "sync_status": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "IGrantedRuleDTO"
+    },
+    "JoinScopeRequest": {
+      "type": "object",
+      "required": [
+        "client_ids",
+        "scope_id"
+      ],
+      "properties": {
+        "client_ids": {
+          "type": "array",
+          "description": "Client Id List",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Scope Id"
+        }
+      },
+      "title": "JoinScopeRequest"
+    },
+    "ListAccountResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "originalRef": "AccountResponse",
+            "$ref": "#/definitions/AccountResponse"
+          }
+        }
+      },
+      "title": "ListAccountResponse"
+    },
+    "ListClientResponse": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "items": {
+            "originalRef": "ClientResponse",
+            "$ref": "#/definitions/ClientResponse"
+          }
+        }
+      },
+      "title": "ListClientResponse"
+    },
+    "ListGrantedRulesResponse": {
+      "type": "object",
+      "properties": {
+        "rules": {
+          "type": "array",
+          "items": {
+            "originalRef": "IGrantedRuleDTO",
+            "$ref": "#/definitions/IGrantedRuleDTO"
+          }
+        }
+      },
+      "title": "ListGrantedRulesResponse"
+    },
+    "ListMemberResponse": {
+      "type": "object",
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": {
+            "originalRef": "MemberDetailResponse",
+            "$ref": "#/definitions/MemberDetailResponse"
+          }
+        }
+      },
+      "title": "ListMemberResponse"
+    },
+    "ListMerchantResponse": {
+      "type": "object",
+      "properties": {
+        "merchants": {
+          "type": "array",
+          "items": {
+            "originalRef": "MerchantDetailResponse",
+            "$ref": "#/definitions/MerchantDetailResponse"
+          }
+        }
+      },
+      "title": "ListMerchantResponse"
+    },
+    "ListNetworkResponse": {
+      "type": "object",
+      "properties": {
+        "networks": {
+          "type": "array",
+          "items": {
+            "originalRef": "NetworkResponse",
+            "$ref": "#/definitions/NetworkResponse"
+          }
+        }
+      },
+      "title": "ListNetworkResponse"
+    },
+    "ListRulePointMoneyResponse": {
+      "type": "object",
+      "properties": {
+        "rule_point_moneys": {
+          "type": "array",
+          "items": {
+            "originalRef": "RulePointMoneyResponse",
+            "$ref": "#/definitions/RulePointMoneyResponse"
+          }
+        }
+      },
+      "title": "ListRulePointMoneyResponse"
+    },
+    "ListTerminalResponse": {
+      "type": "object",
+      "properties": {
+        "terminals": {
+          "type": "array",
+          "items": {
+            "originalRef": "TerminalDetailResponse",
+            "$ref": "#/definitions/TerminalDetailResponse"
+          }
+        }
+      },
+      "title": "ListTerminalResponse"
+    },
+    "ListTransactionPointResponse": {
+      "type": "object",
+      "properties": {
+        "transaction_points": {
+          "type": "array",
+          "items": {
+            "originalRef": "TransactionPointDTO",
+            "$ref": "#/definitions/TransactionPointDTO"
+          }
+        }
+      },
+      "title": "ListTransactionPointResponse"
+    },
+    "ListTransactionResponse": {
+      "type": "object",
+      "properties": {
+        "transactions": {
+          "type": "array",
+          "items": {
+            "originalRef": "TransactionResponse",
+            "$ref": "#/definitions/TransactionResponse"
+          }
+        }
+      },
+      "title": "ListTransactionResponse"
+    },
+    "ListTransactionSystemResponse": {
+      "type": "object",
+      "properties": {
+        "transaction_systems": {
+          "type": "array",
+          "items": {
+            "originalRef": "TransactionSystemResponse",
+            "$ref": "#/definitions/TransactionSystemResponse"
+          }
+        }
+      },
+      "title": "ListTransactionSystemResponse"
+    },
+    "ListUserResponse": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "array",
+          "items": {
+            "originalRef": "UserResponse",
+            "$ref": "#/definitions/UserResponse"
+          }
+        }
+      },
+      "title": "ListUserResponse"
+    },
+    "MemberDetailResponse": {
+      "type": "object",
+      "properties": {
+        "account_id": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "date_of_birth": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "email": {
+          "type": "string"
+        },
+        "expiry_point_date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "external_id": {
+          "type": "string"
+        },
+        "gender": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "id_card_number": {
+          "type": "string"
+        },
+        "id_citizen_number": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "network": {
+          "originalRef": "NetworkNameResponse",
+          "$ref": "#/definitions/NetworkNameResponse"
+        },
+        "passport_number": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "rank_code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "rate_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "registry_date": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "MemberDetailResponse"
+    },
+    "MemberResponse": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "external_id": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "title": "MemberResponse"
+    },
+    "MerchantDetailResponse": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "merchant_code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "network": {
+          "originalRef": "NetworkNameResponse",
+          "$ref": "#/definitions/NetworkNameResponse"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "MerchantDetailResponse"
+    },
+    "MerchantResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "merchant_code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "network_name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        }
+      },
+      "title": "MerchantResponse"
+    },
+    "NetworkNameResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "NetworkNameResponse"
+    },
+    "NetworkResponse": {
+      "type": "object",
+      "properties": {
+        "allow_negative_cancel_grant": {
+          "type": "boolean"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "sort_order": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "NetworkResponse"
+    },
+    "RulePointMoneyResponse": {
+      "type": "object",
+      "properties": {
+        "apply_from": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "apply_to": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "currency": {
+          "type": "string"
+        },
+        "exchange_amount_grant": {
+          "type": "number",
+          "format": "float"
+        },
+        "exchange_amount_spend": {
+          "type": "number",
+          "format": "float"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "network_name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "unit_point": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "RulePointMoneyResponse"
+    },
+    "StatusGrantedRuleRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "status, Default status = 1 "
+        }
+      },
+      "title": "StatusGrantedRuleRequest"
+    },
+    "StatusResponse": {
+      "type": "object",
+      "properties": {
+        "statuses": {
+          "type": "array",
+          "items": {
+            "originalRef": "DropdownItem",
+            "$ref": "#/definitions/DropdownItem"
+          }
+        }
+      },
+      "title": "StatusResponse"
+    },
+    "StatusRulePointMoneyRequest": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "status, Default status = 1 "
+        }
+      },
+      "title": "StatusRulePointMoneyRequest"
+    },
+    "SystemNewPointResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        }
+      },
+      "title": "SystemNewPointResponse"
+    },
+    "TKExtraResponse«ListAccountResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListAccountResponse",
+          "$ref": "#/definitions/ListAccountResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListAccountResponse»"
+    },
+    "TKExtraResponse«ListClientResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListClientResponse",
+          "$ref": "#/definitions/ListClientResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListClientResponse»"
+    },
+    "TKExtraResponse«ListGrantedRulesResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListGrantedRulesResponse",
+          "$ref": "#/definitions/ListGrantedRulesResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListGrantedRulesResponse»"
+    },
+    "TKExtraResponse«ListMemberResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListMemberResponse",
+          "$ref": "#/definitions/ListMemberResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListMemberResponse»"
+    },
+    "TKExtraResponse«ListMerchantResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListMerchantResponse",
+          "$ref": "#/definitions/ListMerchantResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListMerchantResponse»"
+    },
+    "TKExtraResponse«ListNetworkResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListNetworkResponse",
+          "$ref": "#/definitions/ListNetworkResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListNetworkResponse»"
+    },
+    "TKExtraResponse«ListRulePointMoneyResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListRulePointMoneyResponse",
+          "$ref": "#/definitions/ListRulePointMoneyResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListRulePointMoneyResponse»"
+    },
+    "TKExtraResponse«ListTerminalResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListTerminalResponse",
+          "$ref": "#/definitions/ListTerminalResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListTerminalResponse»"
+    },
+    "TKExtraResponse«ListTransactionPointResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListTransactionPointResponse",
+          "$ref": "#/definitions/ListTransactionPointResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListTransactionPointResponse»"
+    },
+    "TKExtraResponse«ListTransactionResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListTransactionResponse",
+          "$ref": "#/definitions/ListTransactionResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListTransactionResponse»"
+    },
+    "TKExtraResponse«ListTransactionSystemResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListTransactionSystemResponse",
+          "$ref": "#/definitions/ListTransactionSystemResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListTransactionSystemResponse»"
+    },
+    "TKExtraResponse«ListUserResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "extra": {
+          "originalRef": "ExtraResponse",
+          "$ref": "#/definitions/ExtraResponse"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ListUserResponse",
+          "$ref": "#/definitions/ListUserResponse"
+        }
+      },
+      "title": "TKExtraResponse«ListUserResponse»"
+    },
+    "TKResponse«AccountResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "AccountResponse",
+          "$ref": "#/definitions/AccountResponse"
+        }
+      },
+      "title": "TKResponse«AccountResponse»"
+    },
+    "TKResponse«ClientResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "ClientResponse",
+          "$ref": "#/definitions/ClientResponse"
+        }
+      },
+      "title": "TKResponse«ClientResponse»"
+    },
+    "TKResponse«CycleResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "CycleResponse",
+          "$ref": "#/definitions/CycleResponse"
+        }
+      },
+      "title": "TKResponse«CycleResponse»"
+    },
+    "TKResponse«DropDownResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "DropDownResponse",
+          "$ref": "#/definitions/DropDownResponse"
+        }
+      },
+      "title": "TKResponse«DropDownResponse»"
+    },
+    "TKResponse«GrantedRuleResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "GrantedRuleResponse",
+          "$ref": "#/definitions/GrantedRuleResponse"
+        }
+      },
+      "title": "TKResponse«GrantedRuleResponse»"
+    },
+    "TKResponse«GrantedRulesDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "GrantedRulesDetailResponse",
+          "$ref": "#/definitions/GrantedRulesDetailResponse"
+        }
+      },
+      "title": "TKResponse«GrantedRulesDetailResponse»"
+    },
+    "TKResponse«MemberDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "MemberDetailResponse",
+          "$ref": "#/definitions/MemberDetailResponse"
+        }
+      },
+      "title": "TKResponse«MemberDetailResponse»"
+    },
+    "TKResponse«MerchantDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "MerchantDetailResponse",
+          "$ref": "#/definitions/MerchantDetailResponse"
+        }
+      },
+      "title": "TKResponse«MerchantDetailResponse»"
+    },
+    "TKResponse«NetworkResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "NetworkResponse",
+          "$ref": "#/definitions/NetworkResponse"
+        }
+      },
+      "title": "TKResponse«NetworkResponse»"
+    },
+    "TKResponse«RulePointMoneyResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "RulePointMoneyResponse",
+          "$ref": "#/definitions/RulePointMoneyResponse"
+        }
+      },
+      "title": "TKResponse«RulePointMoneyResponse»"
+    },
+    "TKResponse«StatusResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "StatusResponse",
+          "$ref": "#/definitions/StatusResponse"
+        }
+      },
+      "title": "TKResponse«StatusResponse»"
+    },
+    "TKResponse«SystemNewPointResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "SystemNewPointResponse",
+          "$ref": "#/definitions/SystemNewPointResponse"
+        }
+      },
+      "title": "TKResponse«SystemNewPointResponse»"
+    },
+    "TKResponse«TerminalDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "TerminalDetailResponse",
+          "$ref": "#/definitions/TerminalDetailResponse"
+        }
+      },
+      "title": "TKResponse«TerminalDetailResponse»"
+    },
+    "TKResponse«TransactionPointResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "TransactionPointResponse",
+          "$ref": "#/definitions/TransactionPointResponse"
+        }
+      },
+      "title": "TKResponse«TransactionPointResponse»"
+    },
+    "TKResponse«TransactionResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "TransactionResponse",
+          "$ref": "#/definitions/TransactionResponse"
+        }
+      },
+      "title": "TKResponse«TransactionResponse»"
+    },
+    "TKResponse«TransactionSystemDetailResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "TransactionSystemDetailResponse",
+          "$ref": "#/definitions/TransactionSystemDetailResponse"
+        }
+      },
+      "title": "TKResponse«TransactionSystemDetailResponse»"
+    },
+    "TKResponse«UserResponse»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "description": "Dữ liệu trả về",
+          "originalRef": "UserResponse",
+          "$ref": "#/definitions/UserResponse"
+        }
+      },
+      "title": "TKResponse«UserResponse»"
+    },
+    "TKResponse«string»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "00",
+          "description": "Mã code"
+        },
+        "execution_time": {
+          "type": "integer",
+          "format": "int64",
+          "example": 50,
+          "description": "Thời gian xử lý yêu cầu phía server. Đơn vị millisecond (ms)"
+        },
+        "message": {
+          "type": "string",
+          "example": "Thành công",
+          "description": "Message trả về"
+        },
+        "result": {
+          "type": "string",
+          "description": "Dữ liệu trả về"
+        }
+      },
+      "title": "TKResponse«string»"
+    },
+    "TerminalDetailResponse": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "merchant": {
+          "originalRef": "MerchantResponse",
+          "$ref": "#/definitions/MerchantResponse"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "TerminalDetailResponse"
+    },
+    "TerminalResponse": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "title": "TerminalResponse"
+    },
+    "Timestamp": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "day": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "hours": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "minutes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "month": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "nanos": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "seconds": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "time": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "timezoneOffset": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "year": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Timestamp"
+    },
+    "TransactionPointDTO": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "from_account_id": {
+          "type": "string"
+        },
+        "from_object_id": {
+          "type": "string"
+        },
+        "from_object_type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "order_code": {
+          "type": "string"
+        },
+        "point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "to_account_id": {
+          "type": "string"
+        },
+        "to_object_id": {
+          "type": "string"
+        },
+        "to_object_type": {
+          "type": "string"
+        },
+        "transaction_id": {
+          "type": "string"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "transaction_type_text": {
+          "type": "string"
+        },
+        "txn_status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "txn_status_desc": {
+          "type": "string"
+        },
+        "uuid": {
+          "type": "string"
+        }
+      },
+      "title": "TransactionPointDTO"
+    },
+    "TransactionPointResponse": {
+      "type": "object",
+      "properties": {
+        "from_acc_balance_after": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "from_acc_balance_before": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "from_acc_id": {
+          "type": "string"
+        },
+        "from_acc_name": {
+          "type": "string"
+        },
+        "from_acc_type": {
+          "type": "string"
+        },
+        "from_object_type": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "on_chain_message": {
+          "type": "string"
+        },
+        "point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "to_acc_balance_after": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "to_acc_balance_before": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "to_acc_id": {
+          "type": "string"
+        },
+        "to_acc_name": {
+          "type": "string"
+        },
+        "to_acc_type": {
+          "type": "string"
+        },
+        "to_object_type": {
+          "type": "string"
+        },
+        "transaction_id": {
+          "type": "string"
+        },
+        "txn_desc": {
+          "type": "string"
+        },
+        "txn_point_type": {
+          "type": "string"
+        },
+        "txn_status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "txn_status_text": {
+          "type": "string"
+        },
+        "txn_time": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "uuid": {
+          "type": "string"
+        }
+      },
+      "title": "TransactionPointResponse"
+    },
+    "TransactionResponse": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "error_message": {
+          "type": "string"
+        },
+        "grant_point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "string"
+        },
+        "member": {
+          "originalRef": "MemberResponse",
+          "$ref": "#/definitions/MemberResponse"
+        },
+        "merchant": {
+          "originalRef": "MerchantResponse",
+          "$ref": "#/definitions/MerchantResponse"
+        },
+        "order_code": {
+          "type": "string"
+        },
+        "ref_id": {
+          "type": "string"
+        },
+        "spend_amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "spend_point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "terminal": {
+          "originalRef": "TerminalResponse",
+          "$ref": "#/definitions/TerminalResponse"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "transaction_type_text": {
+          "type": "string"
+        },
+        "txn_desc": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "TransactionResponse"
+    },
+    "TransactionSystemDetailResponse": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "member_account_id": {
+          "type": "string"
+        },
+        "member_id": {
+          "type": "string"
+        },
+        "member_name": {
+          "type": "string"
+        },
+        "merchant_account_id": {
+          "type": "string"
+        },
+        "merchant_id": {
+          "type": "string"
+        },
+        "merchant_name": {
+          "type": "string"
+        },
+        "network_account_id": {
+          "type": "string"
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "network_name": {
+          "type": "string"
+        },
+        "point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "transaction_type_text": {
+          "type": "string"
+        },
+        "txn_desc": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "TransactionSystemDetailResponse"
+    },
+    "TransactionSystemResponse": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "member_account_id": {
+          "type": "string"
+        },
+        "member_id": {
+          "type": "string"
+        },
+        "merchant_account_id": {
+          "type": "string"
+        },
+        "merchant_id": {
+          "type": "string"
+        },
+        "network_account_id": {
+          "type": "string"
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "network_name": {
+          "type": "string"
+        },
+        "point": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "transaction_type": {
+          "type": "string"
+        },
+        "transaction_type_text": {
+          "type": "string"
+        },
+        "txn_desc": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "TransactionSystemResponse"
+    },
+    "TxnSystemPointRequest": {
+      "type": "object",
+      "required": [
+        "point",
+        "transaction_type",
+        "txn_desc"
+      ],
+      "properties": {
+        "member_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Member Id"
+        },
+        "merchant_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Mã merchant thực hiện giao dịch"
+        },
+        "network_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Mã network"
+        },
+        "point": {
+          "type": "integer",
+          "description": "Số điểm giao dịch",
+          "minimum": 1,
+          "maximum": 2000000000,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        },
+        "transaction_type": {
+          "type": "string",
+          "description": "Loại giao dịch",
+          "minLength": 0,
+          "maxLength": 2
+        },
+        "txn_desc": {
+          "type": "string",
+          "description": "Nội dung giao dịch",
+          "minLength": 0,
+          "maxLength": 545
+        }
+      },
+      "title": "TxnSystemPointRequest"
+    },
+    "UpdateClientRequest": {
+      "type": "object",
+      "required": [
+        "api_callback",
+        "name"
+      ],
+      "properties": {
+        "api_callback": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 200,
+          "pattern": "^|^(http|https)://(.*)"
+        },
+        "api_version": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 5,
+          "pattern": "^[a-zA-Z0-9_.-]*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50
+        },
+        "secret_key": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "minimum": 0,
+          "maximum": 3,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "UpdateClientRequest"
+    },
+    "UpdateClientScopeRequest": {
+      "type": "object",
+      "required": [
+        "client_id",
+        "scope_id",
+        "status"
+      ],
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "description": "Client Id"
+        },
+        "scope_id": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Scope Id"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Trạng thái. 0: Inactive; 1: Active"
+        }
+      },
+      "title": "UpdateClientScopeRequest"
+    },
+    "UpdateGrantedRulePointRequest": {
+      "type": "object",
+      "properties": {
+        "effect_date": {
+          "type": "string",
+          "description": "effect date, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "expire_date": {
+          "type": "string",
+          "description": "expire date, Format: yyyymmdd",
+          "pattern": "^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$"
+        },
+        "granted_rule_amounts": {
+          "type": "array",
+          "description": "Danh sách rule theo số tiền",
+          "items": {
+            "originalRef": "CUGrantedRuleAmount",
+            "$ref": "#/definitions/CUGrantedRuleAmount"
+          }
+        },
+        "name": {
+          "type": "string",
+          "description": "name",
+          "minLength": 0,
+          "maxLength": 50
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Status",
+          "minimum": 0,
+          "maximum": 3,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "UpdateGrantedRulePointRequest"
+    },
+    "UpdateMerchantRequest": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name",
+          "minLength": 0,
+          "maxLength": 200
+        }
+      },
+      "title": "UpdateMerchantRequest"
+    },
+    "UpdateNetworkRequest": {
+      "type": "object",
+      "properties": {
+        "allow_negative_cancel_grant": {
+          "type": "boolean",
+          "description": "Cho phép TK Member âm khi hoàn tích điểm"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "sort_order": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Sort order"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Status",
+          "minimum": 0,
+          "maximum": 3,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "UpdateNetworkRequest"
+    },
+    "UpdateRulePointMoneyRequest": {
+      "type": "object",
+      "properties": {
+        "apply_from": {
+          "type": "string",
+          "description": "appy from, Format: yyyymmdd",
+          "pattern": "(^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$)"
+        },
+        "apply_to": {
+          "type": "string",
+          "description": "appy to, Format: yyyymmdd",
+          "pattern": "(^(19|20|21)\\d\\d(0?[1-9]|1[0-2])(0?[1-9]|[12][0-9]|3[01])$)"
+        },
+        "currency": {
+          "type": "string",
+          "description": "currency",
+          "minLength": 3,
+          "maxLength": 2147483647
+        },
+        "exchange_amount_grant": {
+          "type": "number",
+          "format": "float",
+          "description": "exchange amount grant per unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "exchange_amount_spend": {
+          "type": "number",
+          "format": "float",
+          "description": "exchange amount spend per unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        },
+        "unit_point": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Unit point",
+          "minimum": 1,
+          "exclusiveMinimum": false
+        }
+      },
+      "title": "UpdateRulePointMoneyRequest"
+    },
+    "UpdateTerminalRequest": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Địa chỉ Terminal"
+        },
+        "code": {
+          "type": "string",
+          "description": "code",
+          "minLength": 1,
+          "maxLength": 2147483647
+        },
+        "merchant_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Id Merchant"
+        },
+        "name": {
+          "type": "string",
+          "description": "Tên Terminal"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Status Terminal",
+          "minimum": 0,
+          "maximum": 3,
+          "exclusiveMinimum": false,
+          "exclusiveMaximum": false
+        }
+      },
+      "title": "UpdateTerminalRequest"
+    },
+    "UpdateUserRequest": {
+      "type": "object",
+      "properties": {
+        "network_ids": {
+          "type": "array",
+          "description": "network id",
+          "items": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "type": {
+          "type": "string",
+          "description": "type"
+        }
+      },
+      "title": "UpdateUserRequest"
+    },
+    "UpdateUserStatusRequest": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Trạng thái"
+        }
+      },
+      "title": "UpdateUserStatusRequest"
+    },
+    "UserResponse": {
+      "type": "object",
+      "properties": {
+        "created_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "networks": {
+          "type": "array",
+          "items": {
+            "originalRef": "NetworkNameResponse",
+            "$ref": "#/definitions/NetworkNameResponse"
+          }
+        },
+        "picture": {
+          "type": "string"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status_text": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "type_text": {
+          "type": "string"
+        },
+        "updated_at": {
+          "originalRef": "Timestamp",
+          "$ref": "#/definitions/Timestamp"
+        },
+        "updated_by": {
+          "type": "string"
+        }
+      },
+      "title": "UserResponse"
+    }
+  }
+}

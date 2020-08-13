@@ -1,0 +1,11 @@
+import { axiosClient, getResultAndHeaders } from '../axiosClient';
+
+const {{operationName}} = (params: {{paramType}}, headers = {}) => {
+  return axiosClient
+    .{{operationMethod}}({{methodPath}}, {params, headers})
+    .then(getResultAndHeaders);
+};
+
+export default {
+  {{operationName}},
+}
